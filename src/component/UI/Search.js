@@ -85,29 +85,29 @@ class Search extends Component {
             {this.state.display ? 
                 (
                     <div className="card" >
-                    <div className="image-wrapper">
-                        <img 
-                            src= {this.state.imageUrl} 
-                            alt={this.state.name} 
-                            className="pokemon-img"
-                        />
+                        <div className="image-wrapper">
+                            <img 
+                                src= {this.state.imageUrl} 
+                                alt={this.state.name} 
+                                className="pokemon-img bottom"
+                            />
+                        </div>
+                        <div className="pokemon-copy-wrapper">
+                            <div className="pokemon-intro">
+                                <h3 className="pokemon-name"> {this.state.name.toLowerCase().split(' ').map(letter => letter.charAt(0).toUpperCase() +  letter.substring(1)).join(' ')} </h3>
+                                <p className="type">Type: {this.state.types} </p>
+                                <p className="abilities">Abilities: {this.state.abilities} </p>
+                            </div>
+                            <div className="stats-wrapper">
+                                <span className="hp">HP: {this.state.hp} </span>
+                                <span className="attack">Attack: {this.state.attack} </span>
+                                <span className="defense">Defense: {this.state.defense} </span>
+                                <span className="special-attack">Special attack: {this.state.specialAttack} </span>
+                                <span className="special-defense">Special defense: {this.state.specialDefense} </span>
+                                <span className="speed">Speed: {this.state.speed} </span>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div className="pokemon-intro">
-                        <h3 className="pokemon-name"> {this.state.name.toLowerCase().split(' ').map(letter => letter.charAt(0).toUpperCase() +  letter.substring(1)).join(' ')} </h3>
-                        <p className="type">Type: {this.state.types} </p>
-                        <p className="abilities">Abilities: {this.state.abilities} </p>
-                    </div>
-                    <div className="stats-wrapper">
-                        <span className="hp">HP: {this.state.hp} </span>
-                        <span className="attack">Attack: {this.state.attack} </span>
-                        <span className="defense">Defense: {this.state.defense} </span>
-                        <span className="special-attack">Special attack: {this.state.specialAttack} </span>
-                        <span className="special-defense">Special defense: {this.state.specialDefense} </span>
-                        <span className="speed">Speed: {this.state.speed} </span>
-                    </div>
-                    
-                </div>
                 
                 ) : (null)}
             
