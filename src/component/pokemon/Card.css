@@ -1,0 +1,21 @@
+@media (min-width: 450px) {
+    .card {
+        text-align: inherit;
+        flex-direction: column;
+        width: 23%;
+        padding: 2rem;
+    }
+    .pokemon-intro {
+        flex-direction: column;
+    }
+    
+    img.pokemon-img {
+        width: 40%;
+    }
+    .stats-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
