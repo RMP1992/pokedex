@@ -4,9 +4,10 @@ import './SearchButton.css';
 class Button extends Component {
     render() {
         return (
-            <div>
+            <div className="btn-container">
                 <button
-                    onClick={this.props.handleSubmit}    
+                    onClick={this.props.handleSubmit}  
+                    className="btn"  
                 >
                     Search
                 </button>

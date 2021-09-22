@@ -1,7 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
-@media (min-width: 450px) {
+@media (min-width: 350px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    label {
+        width: 90%;
+    }
+    input[type="text"] {
+        border-radius: 50px;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+    }
+    
+}
+@media (min-width: 1000px) {
     form {
         display: flex;
         flex-direction: row;
+        margin-bottom: 3rem;
+    }
+    label {
+        width: 90%;
+    }
+    input[type="text"] {
+        width: 100%;
+        border-radius: 40px;
+        border: .5px solid gray;
     }
 }

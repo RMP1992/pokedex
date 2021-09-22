@@ -1,17 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
-@media (min-width: 450px) {
+
+@media (min-width: 350px) {
     
     .card {
         text-align: inherit;
         flex-direction: column;
         width: 85%;
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 15px;
-        background: linear-gradient( #deede4 29%, #ffffff 29% );
-        margin: 1rem;
+        background: linear-gradient( #deede4 23%, #ffffff 23% );
+        margin: 2em 0;
         box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
         height: 92%;
+    }
+    .pokemon-list a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .pokemon-intro {
         flex-direction: column;
@@ -21,7 +25,7 @@
     }
     
     img.pokemon-img {
-        width: 40%;
+        width: 60%;
         filter: drop-shadow(0px 10px 12px black);
     }
     .stats-wrapper {
@@ -51,9 +55,10 @@
         margin-right: 1em;
     }
     .stat-container {
-        width: 32%;
+        width: 50%;
         text-align: center;
         padding-bottom: 1em;
+        color: #000;
     }
     
     .pokemon-name {
@@ -63,4 +68,12 @@
         color: #000;
     }
 }
-
+@media (min-width: 1000px) {
+    h1.heading {
+        font-weight: unset;
+    }
+    .pokemon-list a {
+        width: 33%;
+        margin-top: 3rem;
+    }
+}

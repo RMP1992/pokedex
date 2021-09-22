@@ -38,7 +38,7 @@ class Search extends Component {
         return(
             
             
-            <form onSubmit= {handleSubmit}>
+            <form onSubmit= {handleSubmit} className="input-container">
                 <label>
                     <input type="text" placeholder="Search Pokemon" onChange={handleChange} />
                 </label>

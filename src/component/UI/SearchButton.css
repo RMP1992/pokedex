@@ -1,0 +1,36 @@
+
+@media (min-width: 350px) {
+    
+    .btn:hover {
+        background-color: #0045ff ;
+    }
+    button.btn {
+        border-radius: 50px;
+        color: #fff;
+        background-color: #000;
+        width: 100%;
+        height: 40px;
+        font-weight: 700;
+    }
+   
+    .btn-container {
+        width: 90%;
+        margin: 1em 0 3em;
+    }
+    .input-container a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+@media (min-width: 1000px) {
+    .btn-container {
+        margin: unset;
+        width: 25%;
+    }
+    .input-container a {
+        
+        justify-content: unset;
+    }
+    
+}

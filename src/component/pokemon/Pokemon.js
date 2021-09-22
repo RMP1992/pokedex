@@ -114,7 +114,7 @@ class Pokemon extends Component {
                     <p>Hatch Steps: {this.state.hatchSteps} </p>
                 </div>
                 <div>
-                <p>Catch Rate: {this.state.catchRate} </p>
+                <p className="catch-rate">Catch Rate: {this.state.catchRate}% </p>
                 </div>
                 <p>Description: {this.state.description} </p>
                 </div>

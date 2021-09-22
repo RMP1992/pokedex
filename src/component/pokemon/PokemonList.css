@@ -1,12 +1,10 @@
-@media (min-width: 450px) {
-    .pokemon-list a {
-        width: 33%;
-        display: block;
-        color: #000;
-        margin-top: 3rem;
-    }
+@media (min-width: 1000px) {
+    
+}
+@media (min-width: 350px) {
+   
     .pokemon-list {
-        padding: 3rem 6rem;
+        
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
