@@ -1,27 +1,9 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import {colours} from '../../assets/coloursData';
 import './Card.css';
 
-const colours = {
-    bug: '9CAA18',
-    dark: '503C2D',
-    dragon: '6657BA',
-    electric: 'FAC02E',
-    fairy: 'EDA9ED',
-    fighting: '843E26',
-    fire: 'E2400F',
-    flying: 'A2AFEF',
-    ghost: '13133B',
-    grass: '6EC032',
-    ground: 'D3B057',
-    ice: '81DCF7',
-    normal: 'C4BFB4',
-    poison: '944794',
-    psychic: 'EB457C',
-    rock: 'B29D51',
-    steel: 'B3B3C2',
-    water: '399AF7',
-};
+
 class Card extends Component {
     state = {
         name: "",
@@ -30,6 +12,7 @@ class Card extends Component {
         imageLoading: true,
         tooManyRequests: false,
         types: [],
+        evs: '',
         abilities: [],
         description: "",
         stats: {
@@ -113,7 +96,7 @@ class Card extends Component {
             });
             
         });
-        this.setState({description, name, imageUrl, pokemonIndex, types, abilities, hp, attack, defense, specialAttack, specialDefense, speed})
+        this.setState({description, name, imageUrl, pokemonIndex, types, abilities, evs, hp, attack, defense, specialAttack, specialDefense, speed})
     }
     render() {
         
@@ -136,6 +119,7 @@ class Card extends Component {
                     <div className="pokemon-intro">
                         <h3 className="pokemon-name"> {this.state.name.toLowerCase().split(' ').map(letter => letter.charAt(0).toUpperCase() +  letter.substring(1)).join(' ')} </h3>
                         <div className="type-wrapper">
+                            
                             {this.state.types.map(type => (
                                 <p
                                 key={type}
@@ -144,11 +128,11 @@ class Card extends Component {
                                     backgroundColor: `#${colours[type]}`,
                                     color: 'white'
                                 }}
-                                >
+                                > 
                                 {type
                                     .toLowerCase()
                                     .split('-')
-                                    .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}
+                                    .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join('')}
                                 </p>
                             ))}
                             
@@ -158,51 +142,30 @@ class Card extends Component {
                         <p className="description">Description: {this.state.description} </p>
                     </div>
                     <div className="stats-wrapper">
-                        <div className="hp-stat-wrapper progress">
-                            <p>HP</p>
-                            <div className="stat-container">  
-                            <div className="stats hp" style={{backgroundColor: '#3cfb01', width: `${this.state.hp}`}} > {this.state.hp} 
-                            </div>
-                            </div>
-                        </div>   
-                        <div className="attack-stat-wrapper progress">
-                            <p>Attack</p>
-                            <div className="stat-container">
-                            <div className="stats attack" style={{backgroundColor: '#fb0140', width: `${this.state.attack}`}} > {this.state.attack} 
-                            </div>
-                            </div>
-                        </div>          
-                        <div className="defense-stat-wrapper progress">
-                            <p>Defense</p>
-                            <div className="stat-container">
-                            <div className="stats defense" style={{backgroundColor: '#1705e1', width: `${this.state.defense}`}} > {this.state.defense} 
-                            </div>
-                            </div>
-                        </div> 
-                        <div className="special_attack-stat-wrapper progress">
-                            <p>S Attack</p>
-                            <div className="stat-container">
-                            <div className="stats special-attack" style={{backgroundColor: '#03f0ea', width: `${this.state.specialAttack}`}} > {this.state.specialAttack} 
-                            </div>
-                            </div>
-                        </div> 
-                        <div className="special_defense-stat-wrapper progress">
-                            <p>S Defense</p>
-                            <div className="stat-container">
-                            <div className="stats special-defense" style={{backgroundColor: '#f0b603', width: `${this.state.specialDefense}`}} >  {this.state.specialDefense}
-                            </div>
-                            
-                            </div>
-                        </div> 
-                        <div className="speed-stat-wrapper progress">
-                            <p>Speed</p>
-                            <div className="stat-container">
-                            <div className="stats speed" style={{backgroundColor: '#f0039e', width: `${this.state.speed}`}} > {this.state.speed} 
-                            </div>
-                            </div>
-                        </div> 
-                        
-                        
+                        <div className="stat-container">  
+                            {this.state.hp} 
+                            <div>HP</div>
+                        </div>
+                        <div className="stat-container">
+                            {this.state.attack}
+                            <div>Attack</div>
+                        </div>         
+                        <div className="stat-container">
+                            {this.state.defense}
+                            <div>Defense</div>
+                        </div>
+                        <div className="stat-container">
+                            {this.state.specialAttack}
+                            <div>Special Attack</div>
+                        </div>
+                        <div className="stat-container">
+                            {this.state.specialDefense}
+                            <div>Special Defense</div>
+                        </div>
+                        <div className="stat-container">
+                            {this.state.speed}
+                            <div>Speed</div>
+                        </div>  
                     </div>
                 </div>
             </div>

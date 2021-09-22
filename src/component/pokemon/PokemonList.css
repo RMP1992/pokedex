@@ -5,11 +5,12 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-    }
-    .pokemon-list:nth-of-type(odd) {
-        background-color: #0045ff;
+        background: linear-gradient( #ff2e2e 50%, #0045ff 50% );
     }
     .pokemon-list:nth-of-type(even) {
+        background-color: #0045ff;
+    }
+    .pokemon-list:nth-of-type(odd) {
         background-color: #ff2e2e;
     }
 }

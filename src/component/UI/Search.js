@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './Search.css';
+import SearchButton from './SearchButton';
+import {colours} from '../../assets/coloursData';
 
 
 class Search extends Component {
     state = {
         name: "",
+        coloursData: [colours],
         imageUrl: "",
         pokemon: "",
         types: [],
@@ -29,9 +33,7 @@ class Search extends Component {
             const res = await axios.get(url)
             const name = res.data.name;
             const imageUrl = res.data.sprites.front_default;
-            const types = res.data.types.map(type => type.type.name.toLowerCase()
-            .split('-')
-            .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')).join(', ')
+            const types = res.data.types.map(type => type.type.name)
             const abilities = res.data.abilities.map(ability => {
                 return ability.ability.name.toLowerCase()
                 .split('-')
@@ -81,6 +83,7 @@ class Search extends Component {
                 <label>
                     <input type="text" placeholder="Search Pokemon" onChange={handleChange} />
                 </label>
+                <SearchButton></SearchButton>
             </form>
             {this.state.display ? 
                 (
@@ -95,9 +98,29 @@ class Search extends Component {
                         <div className="pokemon-copy-wrapper">
                             <div className="pokemon-intro">
                                 <h3 className="pokemon-name"> {this.state.name.toLowerCase().split(' ').map(letter => letter.charAt(0).toUpperCase() +  letter.substring(1)).join(' ')} </h3>
-                                <p className="type">Type: {this.state.types} </p>
+                                <div className="type-wrapper">
+                                    
+                                    {this.state.types.map(type => (
+                                        <p
+                                        key={type}
+                                        className="types"
+                                        style={{
+                                            backgroundColor: `#${colours[type]}`,
+                                            color: 'white'
+                                        }}
+                                        > 
+                                        {type
+                                            .toLowerCase()
+                                            .split('-')
+                                            .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}
+                                        </p>
+                                    ))}
+                                    
+                                </div>
+                            
                                 <p className="abilities">Abilities: {this.state.abilities} </p>
-                            </div>
+                                <p className="description">Description: {this.state.description} </p>
+                                </div>
                             <div className="stats-wrapper">
                                 <span className="hp">HP: {this.state.hp} </span>
                                 <span className="attack">Attack: {this.state.attack} </span>

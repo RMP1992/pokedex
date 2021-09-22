@@ -1,20 +1,31 @@
- import React, {Component} from 'react';
+ import React, {Component, Fragment} from 'react';
+ import {HashRouter as Router, Route, Switch} from 'react-router-dom';
  import PokemonList from './component/pokemon/PokemonList';
  import Search from './component/UI/Search';
  import Welcome from './component/pokemon/Welcome';
- import Intro from './component/pokemon/Intro';
+ import Pokemon from './component/pokemon/Pokemon';
  import './App.css';
+ 
+
 
  class App extends Component {
    render () {
      return(
-       <div className="App">
-         <Welcome/>
-         <Intro/>
-         <Search/>
-         <PokemonList></PokemonList>
-         <PokemonList></PokemonList>
-       </div>
+       <Router>
+        <div className="App">
+          <Switch>
+            <Route exact path="/" render={props =>
+              <Fragment>
+                <Welcome/>
+                <Search/>
+                <PokemonList/>
+              </Fragment>
+            } />
+           
+            
+          </Switch>
+        </div>
+       </Router>
      )
    }
  }
