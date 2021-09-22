@@ -1,12 +1,16 @@
  import React, {Component} from 'react';
  import PokemonList from './component/pokemon/PokemonList';
  import Search from './component/UI/Search';
+ import Welcome from './component/pokemon/Welcome';
+ import Intro from './component/pokemon/Intro';
  import './App.css';
 
  class App extends Component {
    render () {
      return(
        <div className="App">
+         <Welcome/>
+         <Intro/>
          <Search/>
          <PokemonList></PokemonList>
          <PokemonList></PokemonList>

@@ -2,7 +2,7 @@
     .card {
         text-align: inherit;
         flex-direction: column;
-        width: 23%;
+        width: 20%;
         padding: 2rem;
         border: 1px solid;
         border-radius: 25px;
@@ -32,10 +32,20 @@
         position: relative;
         bottom: 100px;
     }
-    .pokemon-copy-wrapper {
-        /* background-color: #deede4;
-        padding-top: 4rem; */
+    * {box-sizing:border-box}
+    .stat-container {
+        width: 100%;
     }
+    .stats {
+        text-align: center; 
+        height: 10px;
+    }
+    .progress {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
     
 }
 
