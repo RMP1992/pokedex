@@ -17,11 +17,11 @@
             <Route exact path="/" render={props =>
               <Fragment>
                 <Welcome/>
-                <Search/>
+                
                 <PokemonList/>
               </Fragment>
             } />
-           
+            <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
             
           </Switch>
         </div>

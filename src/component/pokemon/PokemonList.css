@@ -1,16 +1,24 @@
 @media (min-width: 450px) {
+    .pokemon-list a {
+        width: 33%;
+        display: block;
+        color: #000;
+        margin-top: 3rem;
+    }
     .pokemon-list {
-        padding: 8rem 6rem;
+        padding: 3rem 6rem;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         background: linear-gradient( #ff2e2e 50%, #0045ff 50% );
+        
     }
-    .pokemon-list:nth-of-type(even) {
-        background-color: #0045ff;
+    
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    .pokemon-list:nth-of-type(odd) {
-        background-color: #ff2e2e;
-    }
+
 }

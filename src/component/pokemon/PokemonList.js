@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Card from './Card';
+import pokemonLogo from '../../assets/images/pokemon-logo.svg';
 import './PokemonList.css';
 class PokemonList extends Component {
     
     state = {
         randomNum: '',
-        url: "https://pokeapi.co/api/v2/pokemon/?offset=100&limit=6",
+        url: "https://pokeapi.co/api/v2/pokemon/?offset=101",
         randomUrl: "",
         pokemon: null,
         
@@ -32,7 +33,9 @@ class PokemonList extends Component {
                     />
                 ))}
             </div>) : (<h2>Loading Pokemon</h2>)}
-            
+            <div className="logo-container">
+                <img src={pokemonLogo} />
+            </div>
             </React.Fragment>
         );
     }

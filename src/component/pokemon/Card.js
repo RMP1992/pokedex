@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import {Link} from 'react-router-dom';
 import {colours} from '../../assets/coloursData';
 import './Card.css';
 
@@ -9,12 +10,8 @@ class Card extends Component {
         name: "",
         imageUrl: "",
         pokemonIndex: "",
-        imageLoading: true,
-        tooManyRequests: false,
         types: [],
-        evs: '',
         abilities: [],
-        description: "",
         stats: {
             hp: "",
             attack: "",
@@ -28,7 +25,6 @@ class Card extends Component {
         const {url} = this.props;
         const pokemonIndex = url.split('/')[url.split('/').length - 2];
         const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
-        const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
         const pokemonResponse = await Axios.get(pokemonUrl)
         const imageUrl = pokemonResponse.data.sprites.front_default;
         const name = pokemonResponse.data.name;
@@ -83,92 +79,82 @@ class Card extends Component {
             .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
         }).join(', ')
 
-        //get pokemon description
-        let description = '';
-        await Axios.get(pokemonSpeciesUrl).then(res => {
-            
-            res.data.flavor_text_entries.some(flavor => {
-                
-              if (flavor.language.name === 'en') {
-                description = flavor.flavor_text;
-                return;
-              }
-            });
-            
-        });
-        this.setState({description, name, imageUrl, pokemonIndex, types, abilities, evs, hp, attack, defense, specialAttack, specialDefense, speed})
+       
+        this.setState({ name, imageUrl, pokemonIndex, types, abilities, hp, attack, defense, specialAttack, specialDefense, speed})
     }
     render() {
         
        
         
         return (
-            <div className="card" >
-                <div className="image-wrapper">
-                    
-                        <img 
-                            src= {this.state.imageUrl} 
-                            alt={this.state.name} 
-                            onLoad={() => this.setState({imageLoading: false})} 
-                            onError={() => this.setState({tooManyRequests: true})}
-                            className="pokemon-img"
-                        />
-                    
-                </div>
-                <div className="pokemon-copy-wrapper">
-                    <div className="pokemon-intro">
-                        <h3 className="pokemon-name"> {this.state.name.toLowerCase().split(' ').map(letter => letter.charAt(0).toUpperCase() +  letter.substring(1)).join(' ')} </h3>
-                        <div className="type-wrapper">
-                            
-                            {this.state.types.map(type => (
-                                <p
-                                key={type}
-                                className="types"
-                                style={{
-                                    backgroundColor: `#${colours[type]}`,
-                                    color: 'white'
-                                }}
-                                > 
-                                {type
-                                    .toLowerCase()
-                                    .split('-')
-                                    .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join('')}
-                                </p>
-                            ))}
-                            
-                        </div>
+            <Link to={`pokemon/${this.state.pokemonIndex}`}>
+                <div className="card" >
+                    <div className="image-wrapper">
                         
-                        <p className="abilities">Abilities: {this.state.abilities} </p>
-                        <p className="description">Description: {this.state.description} </p>
+                            <img 
+                                src= {this.state.imageUrl} 
+                                alt={this.state.name} 
+                                onLoad={() => this.setState({imageLoading: false})} 
+                                onError={() => this.setState({tooManyRequests: true})}
+                                className="pokemon-img"
+                            />
+                        
                     </div>
-                    <div className="stats-wrapper">
-                        <div className="stat-container">  
-                            {this.state.hp} 
-                            <div>HP</div>
+                    <div className="pokemon-copy-wrapper">
+                        <div className="pokemon-intro">
+                            <h2 className="pokemon-name"> {this.state.name.toLowerCase().split(' ').map(letter => letter.charAt(0).toUpperCase() +  letter.substring(1)).join(' ')} </h2>
+                            <div className="type-wrapper">
+                                
+                                {this.state.types.map(type => (
+                                    <h4
+                                    key={type}
+                                    className="types"
+                                    style={{
+                                        backgroundColor: `#${colours[type]}`,
+                                        color: 'white'
+                                    }}
+                                    > 
+                                    {type
+                                        .toLowerCase()
+                                        .split('-')
+                                        .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join('')}
+                                    </h4>
+                                ))}
+                                
+                            </div>
+                            
+                            <p className="abilities">Abilities: {this.state.abilities} </p>
+                            
                         </div>
-                        <div className="stat-container">
-                            {this.state.attack}
-                            <div>Attack</div>
-                        </div>         
-                        <div className="stat-container">
-                            {this.state.defense}
-                            <div>Defense</div>
+                        <div className="stats-wrapper">
+                            <div className="stat-container">  
+                                {this.state.hp} 
+                                <div>HP</div>
+                            </div>
+                            <div className="stat-container">
+                                {this.state.attack}
+                                <div>Attack</div>
+                            </div>         
+                            <div className="stat-container">
+                                {this.state.defense}
+                                <div>Defense</div>
+                            </div>
+                            <div className="stat-container">
+                                {this.state.specialAttack}
+                                <div>S. Attack</div>
+                            </div>
+                            <div className="stat-container">
+                                {this.state.specialDefense}
+                                <div>S. Defense</div>
+                            </div>
+                            <div className="stat-container">
+                                {this.state.speed}
+                                <div>Speed</div>
+                            </div>  
                         </div>
-                        <div className="stat-container">
-                            {this.state.specialAttack}
-                            <div>Special Attack</div>
-                        </div>
-                        <div className="stat-container">
-                            {this.state.specialDefense}
-                            <div>Special Defense</div>
-                        </div>
-                        <div className="stat-container">
-                            {this.state.speed}
-                            <div>Speed</div>
-                        </div>  
                     </div>
                 </div>
-            </div>
+            </Link>
         );
     }
 }

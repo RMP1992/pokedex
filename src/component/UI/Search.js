@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import './Search.css';
+import {Link} from 'react-router-dom';
 import SearchButton from './SearchButton';
 import {colours} from '../../assets/coloursData';
 
@@ -78,63 +79,18 @@ class Search extends Component {
             
         }
         return(
-            <React.Fragment>
+            
+            
             <form onSubmit= {handleSubmit}>
                 <label>
                     <input type="text" placeholder="Search Pokemon" onChange={handleChange} />
                 </label>
-                <SearchButton></SearchButton>
+                <Link to={`pokemon/${this.state.pokemon}`}>
+                    <SearchButton></SearchButton>
+                </Link>
             </form>
-            {this.state.display ? 
-                (
-                    <div className="card" >
-                        <div className="image-wrapper">
-                            <img 
-                                src= {this.state.imageUrl} 
-                                alt={this.state.name} 
-                                className="pokemon-img bottom"
-                            />
-                        </div>
-                        <div className="pokemon-copy-wrapper">
-                            <div className="pokemon-intro">
-                                <h3 className="pokemon-name"> {this.state.name.toLowerCase().split(' ').map(letter => letter.charAt(0).toUpperCase() +  letter.substring(1)).join(' ')} </h3>
-                                <div className="type-wrapper">
-                                    
-                                    {this.state.types.map(type => (
-                                        <p
-                                        key={type}
-                                        className="types"
-                                        style={{
-                                            backgroundColor: `#${colours[type]}`,
-                                            color: 'white'
-                                        }}
-                                        > 
-                                        {type
-                                            .toLowerCase()
-                                            .split('-')
-                                            .map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}
-                                        </p>
-                                    ))}
-                                    
-                                </div>
-                            
-                                <p className="abilities">Abilities: {this.state.abilities} </p>
-                                <p className="description">Description: {this.state.description} </p>
-                                </div>
-                            <div className="stats-wrapper">
-                                <span className="hp">HP: {this.state.hp} </span>
-                                <span className="attack">Attack: {this.state.attack} </span>
-                                <span className="defense">Defense: {this.state.defense} </span>
-                                <span className="special-attack">Special attack: {this.state.specialAttack} </span>
-                                <span className="special-defense">Special defense: {this.state.specialDefense} </span>
-                                <span className="speed">Speed: {this.state.speed} </span>
-                            </div>
-                        </div>
-                    </div>
-                
-                ) : (null)}
             
-            </React.Fragment>
+            
             
             )
     }
