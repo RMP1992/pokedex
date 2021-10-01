@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
 import {colours} from '../../assets/coloursData';
-import './Card.css';
+import '../../Styles/Card.css';
+
 
 
 class Card extends Component {
@@ -21,6 +22,7 @@ class Card extends Component {
             speed: "",
         }
     }
+    
     async componentDidMount() {
         const {url} = this.props;
         const pokemonIndex = url.split('/')[url.split('/').length - 2];

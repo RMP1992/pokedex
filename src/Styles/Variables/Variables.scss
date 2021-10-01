@@ -1,0 +1,12 @@
+$font: 'Poppins', sans-serif;
+@mixin cardStyles() {
+    text-align: inherit;
+    flex-direction: column;
+    width: 85%;
+    padding: 1rem;
+    border-radius: 15px;
+    background: linear-gradient( #deede4 23%, #ffffff 23% );
+    margin: 2em 0;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    height: 92%;
+}

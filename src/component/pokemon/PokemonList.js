@@ -3,6 +3,8 @@ import axios from 'axios';
 import Card from './Card';
 import pokemonLogo from '../../assets/images/pokemon-logo.svg';
 import './PokemonList.css';
+
+
 class PokemonList extends Component {
     
     state = {
